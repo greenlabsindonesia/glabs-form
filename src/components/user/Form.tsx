@@ -41,6 +41,7 @@ const Form: React.FC = () => {
     console.log("Form Data:", formData);
     console.log("Selected Image:", selectedImage);
   };
+  
   return (
     <div className="">
       {/* Form Section */}

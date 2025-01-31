@@ -5,10 +5,7 @@ export type Personal = {
   fieldName: string; // Nama field untuk pengelolaan data
 }[];
 
-export interface State {
-  toggle: boolean;
-  isActived: boolean;
-}
+
 export const personal: Personal = [
   {
     label: "Name",

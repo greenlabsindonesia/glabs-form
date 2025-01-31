@@ -6,7 +6,7 @@ import React, {
     SetStateAction,
     useContext,
   } from "react";
-  import { State } from "../types/type";
+  import { State } from "../types/state";
   
   interface GlobalContextType {
     state: State;
@@ -24,7 +24,9 @@ import React, {
   export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     const [state, setState] = useState<State>({
       toggle:true,
-      isActived:false
+      isActived:false,
+      error:false,
+      success:false
     });
     const stateHandle = (stateKey: string, value: any) => {
       setState((prevState) => ({
