@@ -27,6 +27,6 @@ export const useModalError = (): modalType => {
       <MdOutlineError className="mx-auto mb-4 text-red-500 w-14 h-14 dark:text-red-300" />
     ),
     titleMessage:`${state.thisRegist ? 'Registration Failed' : 'Login Failed'}`, 
-    message: state.message,
+    message: state.message || "Something went wrong",
   };
 };

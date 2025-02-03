@@ -48,7 +48,7 @@ const LoginForm: React.FC = () => {
         alt="Background"
       />
       <div className="relative z-20 w-full max-w-md p-6 backdrop-blur-md bg-white bg-opacity-10 rounded-lg shadow-lg md:p-8 lg:max-w-lg border border-gray-200 border-opacity-30">
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-4">
           <img className="w-32" src={glabsicon} alt="Logo" />
         </div>
         <h2 className="text-2xl font-bold text-center text-white">
@@ -76,7 +76,7 @@ const LoginForm: React.FC = () => {
             )}
           </div>
 
-          <div className="mb-6 relative">
+          <div className="mb-4 relative">
             <label className="block text-sm font-medium text-gray-200">
               Password
             </label>
@@ -102,6 +102,14 @@ const LoginForm: React.FC = () => {
             {errors.password && (
               <p className="text-red-400 text-sm ">{errors.password.message}</p>
             )}
+          </div>
+          <div className="flex justify-end mb-4">
+            <p
+              onClick={() => navigate("/forgot-password")}
+              className="text-green-400 hover:underline hover:text-green-500 cursor-pointer text-sm"
+            >
+              Forgot Password?
+            </p>
           </div>
 
           <button

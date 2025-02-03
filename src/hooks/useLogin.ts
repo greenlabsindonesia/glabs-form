@@ -35,6 +35,8 @@ export const useLogin = () => {
     mutationKey: ["login"],
     mutationFn: loginUser,
     onSuccess: (data) => {
+      console.log(data);
+      
       reset();
       messageHandler(data.message);
       toggleHandler();

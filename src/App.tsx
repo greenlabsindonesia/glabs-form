@@ -7,6 +7,7 @@ import My from "./pages/users/My";
 import History from "./pages/users/History";
 import RegisterForm from "./pages/RegisterForm";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const App = () => {
   return (
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/" element={<LoginForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </>
   );
