@@ -1,3 +1,5 @@
+
+
 export type Personal = {
   label: string; // Label untuk field
   type: "text" | "email" | "tel"; // Tipe input

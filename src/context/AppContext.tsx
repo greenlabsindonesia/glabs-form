@@ -26,7 +26,9 @@ import React, {
       toggle:true,
       isActived:false,
       error:false,
-      success:false
+      success:false,
+      message:"",
+      thisRegist:false
     });
     const stateHandle = (stateKey: string, value: any) => {
       setState((prevState) => ({

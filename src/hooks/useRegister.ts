@@ -5,10 +5,9 @@ import { useForm } from "react-hook-form";
 import { useGlobalContext } from "../context/AppContext";
 import { axiosInstance } from "../lib/axios";
 
+
 const registerUser = async (data: RegisterSchemaType) => {
   const response = await axiosInstance.post("/api/v1/auth/sign-up", data);
-  console.log(response.data);
-
   return response.data;
 };
 
@@ -18,7 +17,8 @@ export const useRegister = () => {
   const toggleHandler = () => stateHandle("toggle", !state.toggle);
   const errorHandler = (value: boolean) => stateHandle("error", value);
   const successHandler = (value: boolean) => stateHandle("success", value);
-
+  const messageHandler = (value: string) => stateHandle("message", value);
+  const regist = (value:boolean)=> stateHandle("thisRegist", value);
   const {
     register,
     handleSubmit,
@@ -31,14 +31,20 @@ export const useRegister = () => {
   const mutation = useMutation({
     mutationKey: ["register"],
     mutationFn: registerUser,
-    onSuccess: () => {
+    onSuccess: (data) => {
       reset();
+      messageHandler(data.message);
       toggleHandler();
-      successHandler(!state.success);
+      successHandler(true);
+      errorHandler(false);
     },
-    onError: () => {
+    onError: (error:any) => {
+      messageHandler(error.response?.data?.message);
+      console.log(error.response?.data?.message);
       toggleHandler();
-      errorHandler(!state.error);
+      regist(true);
+      errorHandler(true);
+      successHandler(false);
     },
   });
 

@@ -1,17 +1,18 @@
 import { useGlobalContext } from "../context/AppContext";
-import { FaCircleCheck } from "react-icons/fa6";
-import { modalType} from "../types/popUptype";
+
+import { modalType } from "../types/popUptype";
 
 const Modal: React.FC<modalType> = ({ Icon, titleMessage, message }) => {
   const { state, stateHandle } = useGlobalContext();
   const handleClose = () => {
     stateHandle("toggle", !state.toggle);
+    stateHandle("error", false);
+    stateHandle("success", false);
+    stateHandle("thisRegist", false);
   };
 
   return (
     <div className="">
-  
-
       {!state.toggle && (
         <div
           className="fixed p-5 inset-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50"
@@ -41,7 +42,7 @@ const Modal: React.FC<modalType> = ({ Icon, titleMessage, message }) => {
               </svg>
             </button>
             <div className="p-5 text-center">
-            <Icon/>
+              <Icon />
               <h3 className="mb-5 text-lg font-semibold text-gray-700 dark:text-gray-200">
                 {titleMessage}
               </h3>

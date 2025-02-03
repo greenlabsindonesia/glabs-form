@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 export const registerSchema = z
   .object({
@@ -8,8 +8,8 @@ export const registerSchema = z
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Confirmation password must be the same",
-    path: ["confirmPassword"],
+    message: "Confirmation password must be the same as password",
+    path: ["confirmPassword"], // Menentukan lokasi error pada confirmPassword
   });
 
 export type RegisterSchemaType = z.infer<typeof registerSchema>;

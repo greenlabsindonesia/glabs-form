@@ -4,14 +4,20 @@ import { useRegister } from "../hooks/useRegister";
 import glabs from "../assets/glabs.jpg";
 import glabsicon from "../assets/glabsIcon.png";
 import Modal from "../components/Modal";
-import { modalError, modalSuccess } from "../types/popUptype";
+import { useModalError, useModalSuccess } from "../types/popUptype";
 import { useGlobalContext } from "../context/AppContext";
+import { useNavigate } from "react-router-dom";
+import { FiLoader } from "react-icons/fi";
 
 const RegisterForm: React.FC = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [pass, setPass] = useState<string>("");
+
   const { register, handleSubmit, errors, onSubmit, isLoading } = useRegister();
   const { state } = useGlobalContext();
+
+  const modalSuccess = useModalSuccess();
+  const modalError = useModalError();
   const handleFormSubmit = (data: any) => {
     onSubmit(data);
   };
@@ -74,7 +80,7 @@ const RegisterForm: React.FC = () => {
               {...register("email")}
               type="email"
               placeholder="Enter your email"
-              disabled = {isLoading}
+              disabled={isLoading}
               className="mt-1 block w-full px-4 py-2 text-white bg-transparent border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 placeholder-gray-300"
             />
             {errors.email && (
@@ -90,7 +96,6 @@ const RegisterForm: React.FC = () => {
             <div className="relative">
               <input
                 {...register("password")}
-                onChange={(e) => setPass(e.target.value)}
                 type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
                 className="mt-1 block w-full px-4 py-2 text-white bg-transparent border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 placeholder-gray-300 pr-10"
@@ -121,7 +126,6 @@ const RegisterForm: React.FC = () => {
               {...register("confirmPassword")}
               type={showPassword ? "text" : "password"}
               placeholder="••••••••"
-              disabled={pass === ""}
               className="mt-1 block w-full px-4 py-2 text-white bg-transparent border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 placeholder-gray-300"
             />
             {errors.confirmPassword && (
@@ -134,23 +138,26 @@ const RegisterForm: React.FC = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className={`w-full px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1 ${
-              isLoading ? "opacity-50 cursor-not-allowed" : ""
+            className={`w-full px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1 flex space-x-1 justify-center items-center items-center${
+              isLoading ? " cursor-not-allowed" : ""
             }`}
           >
-            Sign Up
+            <p className="">Sign Up</p>
+            {isLoading && (
+              <FiLoader className="text-white animate-spin w-5 h-5" />
+            )}
           </button>
         </form>
 
         {/* Already have an account */}
-        <div className="mt-6 text-center text-sm text-gray-300">
+        <div className="mt-6 text-center text-sm text-gray-300 flex justify-center space-x-1">
           <span>Already have an account? </span>
-          <a
-            href="/login"
-            className="text-green-400 hover:underline hover:text-green-500"
+          <p
+            onClick={() => navigate("/login")}
+            className="text-green-400 hover:underline hover:text-green-500 cursor-pointer"
           >
             Sign in
-          </a>
+          </p>
         </div>
       </div>
     </div>
