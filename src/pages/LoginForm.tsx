@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import glabs from "../assets/glabs.jpg";
@@ -22,6 +22,10 @@ const LoginForm: React.FC = () => {
   const handleFormSubmit = (data: LoginSchemaType) => {
     onSubmit(data);
   };
+
+  useEffect(() => {
+    sessionStorage.setItem("role", 'user');
+  },[])
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 relative p-5">

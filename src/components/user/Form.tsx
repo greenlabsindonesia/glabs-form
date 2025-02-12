@@ -238,7 +238,7 @@ const Form: React.FC = () => {
           <p className="italic text-sm">
             I hereby confirm that the data above is true
           </p>
-          <p className="py-5">Bandung, {formattedDate}</p>
+          <p className="py-5 text-sm lg:text-base">Bandung, {formattedDate}</p>
           <div className="">
             {/* Bagian Preview Gambar */}
             <div className="w-full ">

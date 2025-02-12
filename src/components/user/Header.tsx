@@ -9,7 +9,7 @@ const Header: React.FC = () => {
 //   const path = window.location.pathname;
   const { state, stateHandle } = useGlobalContext();
   return (
-    <header className={`bg-white shadow-md sticky top-0 z-40 ${state.toggle ? "" : "ml-[60%] duration-500 transition-all ease-in-out sm:ml-0"  }`}>
+    <header className={`bg-white shadow-md sticky top-0 z-40 ${!state.toggle ? " duration-500 transition-all ease-in-out  " : "ml-[60%] duration-500 transition-all ease-in-out sm:ml-0"  }`}>
       <div className="flex justify-between items-center px-4 h-20">
         {/* Logo or Dashboard Title */}
         <span

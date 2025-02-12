@@ -8,6 +8,8 @@ import History from "./pages/users/History";
 import RegisterForm from "./pages/RegisterForm";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import ForgotPassword from "./pages/ForgotPassword";
+import RegularAnalysis from "./pages/users/RegularAnalysis";
+import Instrument from "./pages/users/Instrument";
 
 const App = () => {
   return (
@@ -35,6 +37,22 @@ const App = () => {
           element={
             <ProtectedRoute allowedRoles={["user"]}>
               <ClientApprovalForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/regular-analysis"
+          element={
+            <ProtectedRoute allowedRoles={["user"]}>
+              <RegularAnalysis />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/regular-analysis/instrument"
+          element={
+            <ProtectedRoute allowedRoles={["user"]}>
+              <Instrument />
             </ProtectedRoute>
           }
         />
